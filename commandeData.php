@@ -83,7 +83,7 @@ if ($valEnvoyer == "Envoyer") {
         exit();
     }
     $toSave = "$nomClient,$prenomClient,$adresseClient\n$whiteQuantity,$blackQuantity,$cyanQuantity,$magentaQuantity,$yellowQuantity";
-    print("<br>File Saved! <br>");
+    print("<br>File Saved! <br> $nomClient,$prenomClient,$adresseClient\n$whiteQuantity,$blackQuantity,$cyanQuantity,$magentaQuantity,$yellowQuantity <br><br>");
     fputs($monFich, $toSave);
     fclose($monFich);
 
@@ -97,12 +97,12 @@ if ($valEnvoyer == "Envoyer") {
     print("Connected to DB <br>");
 
     //Create DB
-    // $sql = "CREATE DATABASE myDB";
-    //     if ($bdd->query($sql) === TRUE) {
-    //     echo "Database created successfully";
-    // } else {
-    //     echo "Error creating database: " . $bdd->error;
-    // }
+    $sql = "CREATE DATABASE myDB";
+    if (mysqli_query($bdd, $sql)) {
+      echo "Database created successfully";
+    } else {
+      echo "Error creating database: " . mysqli_error($bdd);
+    }
 
     //Get DB Values
     $requete = "select * fromclient";
