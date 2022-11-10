@@ -1,0 +1,66 @@
+body{ 
+    background-color: rgb(184,208,220); 
+    }
+
+#Title{
+    font-size: 40px;
+    font-weight: bold;
+    position:relative;
+    text-align: right;
+    right: 100px;
+}
+
+h1{
+    font-size: 20px;
+}
+
+br{
+    line-height: 50px;
+}
+
+#ColorPicker
+{
+    width: 1000px;
+    height: 70px;
+}
+
+#cp_Left {
+    width: 450px;
+    height: auto;
+    float: left;
+}
+#cp_Right {
+     width: 500px;
+     height: auto;
+     float: right;
+}
+
+ #SliderColorText{
+    text-align: left;
+    border: 1px solid rgb(0, 0, 0);
+} 
+
+#Coordonees
+{
+    position: relative;
+    text-align: center;
+    left: 15%;
+}
+#valeurBleu, #valeurVert, #valeurRouge
+{
+ background:none;
+ border: none;
+}
+#Square
+{
+    width: 120px;
+    height: 80px;
+    background: white;
+    border: 3px solid rgb(128, 128, 128, 255);
+    padding-right: 5;
+}
+
+
+input[type="text"], textarea {
+    background-color : cyan; 
+  }
