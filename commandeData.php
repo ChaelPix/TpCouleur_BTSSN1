@@ -75,7 +75,7 @@ if ($valEnvoyer == "Envoyer") {
     print("4) Quantite de blanc pour : C $whiteForCyan ml | M $whiteForMagenta ml | Y $whiteForYellow ml | B $whiteForBlack ml <br>");
     $whiteQuantity = $whiteForCyan+$whiteForMagenta+$whiteForYellow+$whiteForBlack;
 
-    if ($black < 1){
+    if ($black == 1){
         $blackQuantity = $peintQuantMl;
         $whiteQuantity = 0;
     }
