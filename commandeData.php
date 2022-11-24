@@ -79,6 +79,7 @@ if ($valEnvoyer == "Envoyer") {
         $blackQuantity = $peintQuantMl;
         $whiteQuantity = 0;
     }
+    
     //SaveFile
     $fileName = "$nomClient $prenomClient.txt";
     $monFich = fopen($fileName, "w");
@@ -132,7 +133,7 @@ if ($valEnvoyer == "Envoyer") {
     if ($resultat == FALSE) die("Error Update Stocks. $bdd->error;");
 
     //Add Client
-    $query = "SELECT * FROM client WHERE nom = '$nomClient' && prenom = '$prenomClient'";
+    $query = "SELECT * FROM client WHERE nom = '$nomClient' && prenom = '$prenomClient' && adresse = '$adresseClient'";
     $result = $bdd->query($query);
     if ($result) {
         if (mysqli_num_rows($result) > 0) {
