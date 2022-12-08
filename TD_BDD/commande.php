@@ -26,7 +26,7 @@ if ($valEnvoyer == "Soumettre") {
     $ligne = $resultat->fetch_assoc(); 
     $prixGp = $ligne['prix_unitaire'] * $xGp; 
 
-    $requete = "SELECT prix_unitaire from produit WHERE des_produit = 'Sèche cheveux'";
+    $requete = "SELECT prix_unitaire from produit WHERE code_produit = '257-535'";
     $resultat=$bdd->query($requete);
     $ligne = $resultat->fetch_assoc(); 
     $prixSc = $ligne['prix_unitaire'] * $xSc; 
@@ -62,7 +62,8 @@ if ($valEnvoyer == "Soumettre") {
         $id = $ligne['id_client']; 
     } 
 
-    $requete = "INSERT INTO facture(id_client, reglement) VALUES ($id, $totalPrice)";
+    $requete = "INSERT INTO `facture`(`id_client`, `reglement`) VALUES ($id, $totalPrice)";
+    $resultat = $bdd->query($requete);
 
     //Article
     //Select facture Id
@@ -79,9 +80,11 @@ if ($valEnvoyer == "Soumettre") {
     foreach($resultat as $row)
     {
         $code[$i] = $row['code_produit'];
-        $i = $i + 1;
+        $i = $i + 1;     
     }
     
-    $requete = "INSERT INTO article(id_facture, code_produit, quantite) VALUES ($facture, $code[0] ,$xGp), VALUES ($facture, $code[1] ,$xSc), VALUES ($facture, $code[2] ,$xAv)";
+    $requete = "INSERT INTO `article`(`id_facture`, `code_produit`, `quantite`) VALUES ($facture, '$code[0]' ,$xGp), ($facture, '$code[1]' ,$xSc), ($facture, '$code[2]' ,$xAv)";
+    $resultat = $bdd->query($requete);
+    if ($resultat == FALSE) die("Error Update Client. $bdd->error;");
 }
 ?>
