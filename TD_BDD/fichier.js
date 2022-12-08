@@ -75,8 +75,8 @@ const AvIncrement = () => {
   };
 
   const AvDecrement = () => {
-    xAv--;
-    if(xSc < 0) xSc = 0;
+    //xAv--;
+    if(xAv < 0) xAv = 0;
     AvPriceUpdate();
   };
 

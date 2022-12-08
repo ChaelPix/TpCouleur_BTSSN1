@@ -18,7 +18,7 @@ if ($valEnvoyer == "Soumettre") {
         print("ERROR of connexion <br>"); 
         exit();
     }
-    print("Connected to DB <br>"); 
+    //print("Connected to DB <br>"); 
 
     //PRIX
     $requete = "SELECT prix_unitaire from produit WHERE des_produit = 'Grille-pain'";
@@ -37,6 +37,11 @@ if ($valEnvoyer == "Soumettre") {
     $prixAv = $ligne['prix_unitaire'] * $xAv; 
 
     $totalPrice = $prixAv+$prixGp+$prixSc;
+    if($totalPrice == 0) 
+    {
+        print("<h2> Vous n'avez rien selectionné ! </h2>");
+        return;
+    }
 
 
     //CLIENT
@@ -44,9 +49,9 @@ if ($valEnvoyer == "Soumettre") {
     $result = $bdd->query($query);
     if ($result) {
         if (mysqli_num_rows($result) > 0) {
-            echo '<br> client already registered!';
+            //echo '<br> client already registered!';
         } else {
-            echo '<br> new client';
+            //echo '<br> new client';
             $requete = "INSERT INTO `client2`(`id_client`, `nom`, `prenom`, `adresse`) VALUES (null,'$nomClient','$prenomClient','$adresseClient')";
             $resultat = $bdd->query($requete);
             if ($resultat == FALSE) die("Error Update Client. $bdd->error;");
@@ -86,5 +91,7 @@ if ($valEnvoyer == "Soumettre") {
     $requete = "INSERT INTO `article`(`id_facture`, `code_produit`, `quantite`) VALUES ($facture, '$code[0]' ,$xGp), ($facture, '$code[1]' ,$xSc), ($facture, '$code[2]' ,$xAv)";
     $resultat = $bdd->query($requete);
     if ($resultat == FALSE) die("Error Update Client. $bdd->error;");
+
+    print("<h2> Commande Passée ! </h2>");
 }
 ?>
